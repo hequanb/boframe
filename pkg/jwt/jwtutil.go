@@ -46,7 +46,7 @@ func GenToken(uid int64, username string) (string, error) {
 }
 
 func ParseToken(tokenStr string) (*Claims, error) {
-	var c *Claims
+	var c = new(Claims)
 	// 第三个参数: 提供一个回调函数用于提供要选择的秘钥, 回调函数里面的token参数,是已经解析但未验证的,可以根据token里面的值做一些逻辑, 如`kid`的判断
 	token, err := jwt.ParseWithClaims(tokenStr, c,
 		func(token *jwt.Token) (interface{}, error) {
